@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Control Panel - {{title}}</title>
+  </head>
+  <body>
+    <div id="container">
+      <h1 class="main-title">Control Panel</h1>
+      <div id="settings">
+        <h2>General Settings</h2>
+        <form id="change-password" action="/changepass" method="POST">
+          <h3>Change Password</h2>
+          New Password: <input type="password" id="new-password" />
+          <br />
+          Confirmation: <input type="password" id="verify-password">
+          <br />
+          <input type="submit" value="Change" />
+        </form>
+        <form id="basic-info" action="/changebasic" method="POST">
+          <h3>Configuration</h3>
+          Identifier: <input id="identification-field"
+                             value="{{identification}}" />
+          <br />
+          Title: <input id="title-field" value="{{title}}" />
+          <br />
+          <input type="submit" value="Save" />
+        </form>
+      </div>
+      <div id="challenges">
+        <h2>Challenges</h2>
+        {{#challenges}}
+        <div class="challenge">
+          <table class="challenge-fields">
+            <tr>
+              <td class="field">Name</td>
+              <td class="data">
+                <input class="challenge-name" value="{{name}}" />
+              </td>
+            </tr>
+            <tr>
+              <td class="field">Body</td>
+              <td class="data">
+                <textarea class="challenge-body">
+                  {{body}}
+                </textarea>
+              </td>
+            </tr>
+            <tr>
+              <td class="field">Answer Hash</td>
+              <td class="data">
+                <input class="challenge-hash" value="{{answerHash}}" />
+              </td>
+            </tr>
+          </table> <!-- table.challenge-fields -->
+          <button class="challenge-remove">Remove</button>
+          <button class="challenge-submit">Submit</button>
+        </div> <!-- div.challenge -->
+        {{/challenges}}
+        <button id="add-challenge">Add Challenge</button>
+      </div> <!-- #challenges -->
+    </div> <!-- #container -->
+  </body>
+</html>

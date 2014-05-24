@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Login - {{title}}</title>
+  </head>
+  <body>
+    <div id="container">
+      <h1 class="main-title">Login</h1>
+      <form method="post">
+        Password: <input name="password" id="password" type="password" />
+        <br />
+        <input type="submit" value="Submit">
+      </form>
+      {{#error}}
+      <div id="error">
+        {{error}}
+      </div>
+      {{/error}}
+    </div>
+  </body>
+</html>

@@ -2,24 +2,11 @@ fs = require 'fs'
 
 Challenge = require './challenge'
 Settings = require './settings'
+JsonDb = require './jsondb'
 
-class Configuration
-  constructor: (@file, @settings, @challenges) ->
-    @isSaving = false
-    @waitingSaveCbs = []
+class Configuration extends JsonDb
+  constructor: (@file, @settings, @challenges) -> super @file
   
-  save: (cb) ->
-    if @isSaving
-      @waitingSaveCbs.push cb ? (->)
-    else
-      @isSaving = true
-      data = JSON.stringify @toJSON(), null, 2
-      fs.writeFile @file, data, (err) =>
-        @isSaving = false
-        [newWaiting, @waitingSaveCbs] = [@waitingSaveCbs, []]
-        save aCb for aCb in newWaiting
-        cb? err
-
   toJSON: ->
     return {
       settings: @settings.toJSON()

@@ -4,6 +4,7 @@ cookieParser = require 'cookie-parser'
 session = require 'express-session'
 
 Configuration = require './configuration'
+Submissions = require './submissions'
 pages = [
   'home',
   'login'
@@ -16,29 +17,35 @@ pages = [
 ]
 
 main = ->
-  if process.argv.length isnt 4
-    console.error 'Usage: coffee src/server.coffee <config.json> <port>'
+  if process.argv.length isnt 5
+    console.error 'Usage: coffee src/server.coffee <config.json> <submissions.json> <port>'
     process.exit()
   file = process.argv[2]
+  subFile = process.argv[3]
   Configuration.load file, (err, config) ->
     if err?
       console.trace err.toString()
       process.exit()
-    setup config
+    Submissions.load subFile, (err, subs) ->
+      if err?
+        console.trace err.toString()
+        process.exit()
+      setup config, subs
 
-setup = (config) ->
+setup = (config, subs) ->
   app = express()
   app.use '/assets', express.static 'assets'
   app.use cookieParser()
   app.use session secret: '123123123' + Math.random()
   for page in pages
-    instance = new (require('./pages/' + page)) config
+    instance = new (require('./pages/' + page)) config, subs
     do (instance) ->
       app.get instance.path(), (args...) -> instance.get args...
       app.post instance.path(), (args...) -> instance.post args...
-  app.listen parseInt(process.argv[3]), (err) ->
-    if err?
-      console.trace err.toString()
-      process.exit()
+  # todo change port
+  if not port = parseInt process.argv[4]
+    console.log 'invalid port: ' + process.argv[4]
+    process.exit()
+  app.listen port
 
 main()

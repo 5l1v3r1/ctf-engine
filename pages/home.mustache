@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <head>
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <div id="container">
+      <h1 class="main-title">{{title}}</h1>
+      <div id="challenges">
+        {{#challenges}}
+        <div class="challenge">
+          <h2 class="challenge-name">{{name}}</h2>
+          <p class="challenge-description">{{&body}}</p>
+          <input class="challenge-input" />
+          <button class="challenge-submit">Submit</button>
+        </div>
+        {{/challenges}}
+      </div>
+    </div>
+  </body>
+</html>

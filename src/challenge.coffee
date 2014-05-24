@@ -10,11 +10,12 @@ class Challenge
     return digest.toLowerCase() is @answerHash.toLowerCase()
   
   toJSON: ->
-    return
+    return {
       name: @name
       body: @body
       answerHash: @answerHash
       hints: @hints
+    }
   
   @fromJSON: (obj) ->
     if typeof obj.name isnt 'string'

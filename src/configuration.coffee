@@ -1,8 +1,10 @@
-Challenge = require './challenge'
 fs = require 'fs'
 
+Challenge = require './challenge'
+SubmitInfo = require './submit-info'
+
 class Configuration
-  constructor: (@file, @title, @challenges) ->
+  constructor: (@file, @title, @submitInfo, @challenges) ->
     @isSaving = false
     @waitingSaveCbs = []
   
@@ -16,16 +18,21 @@ class Configuration
         @isSaving = false
         [newWaiting, @waitingSaveCbs] = [@waitingSaveCbs, []]
         save aCb for aCb in newWaiting
-        cb err
+        cb? err
 
   toJSON: ->
-    return
+    return {
       title: @title
       challenges: x.toJSON() for x in @challenges
+      submitInfo: @submitInfo.toJSON()
+    }
 
   @load: (file, cb) ->
     fs.readFile file, (err, data) =>
-      return cb err if err?
+      if err?
+        config = Configuration.newBlank file
+        config.save null
+        return cb null, config
       try
         obj = JSON.parse data
         result = Configuration.fromJSON file, obj
@@ -41,6 +48,9 @@ class Configuration
     if not Array.isArray obj.challenges
       throw new TypeError 'invalid challenges type'
     challenges = (Challenge.fromJSON x for x in obj.challenges)
-    return new Configuration file, obj.title, challenges
+    subInfo = SubmitInfo.fromJSON obj.submitInfo
+    return new Configuration file, obj.title, subInfo, challenges
+  
+  @newBlank: (file) -> new Configuration file, 'Untitled', new SubmitInfo(), []
 
 module.exports = Configuration

@@ -1,0 +1,19 @@
+{
+  "name": "ctf-engine",
+  "description": "a lightweight web app for managing a CTF contest",
+  "author": "Alex Nichol <unixpickle@gmail.com>",
+  "repository": "https://github.com/unixpickle/ctf-engine.git",
+  "dependencies": {
+    "express": "4.3.x",
+    "coffee-script": "1.7.x",
+    "mustache": "0.8.x"
+  },
+  "version": "0.0.1",
+  "licenses": [{
+    "type": "GPL",
+    "url": "http://www.gnu.org/licenses/gpl.html"
+  }],
+  "engines": {
+    "node": "0.10.x"
+  }
+}

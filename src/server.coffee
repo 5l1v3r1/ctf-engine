@@ -16,6 +16,7 @@ pages = [
   'changepass'
   'submit'
   'saveresult'
+  'logout'
 ]
 
 main = ->

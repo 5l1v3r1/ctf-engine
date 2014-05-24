@@ -1,5 +1,4 @@
 Page = require './page'
-Busboy = require 'busboy'
 
 class Login extends Page
   path: -> '/login'

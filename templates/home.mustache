@@ -13,6 +13,7 @@
         <form action="submit" method="POST">
           <legend>{{name}}</legend>
           <p class="challenge-description">{{&body}}</p>
+          <input type="hidden" name="name" value="{{name}}" />
           <fieldset>
             <label for="answer">Answer</label>
             <div class="input-append">

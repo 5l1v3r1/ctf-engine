@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Right! - {{title}}</title>
+    <link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/global.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="container">
+      <h1 class="main-title">Correct!</h1>
+      <form method="post" action="saveresult">
+        <input type="hidden" name="name" value="{{name}}" />
+        <input type="hidden" name="answer" value="{{answer}}" />
+        <fieldset>
+          <label for="full-name">Your Name</label>
+          <input name="full-name" type="text" />
+          <label for="identification">{{identification}}</label>
+          <input name="identification" type="text" />
+          <br />
+          <button type="submit" class="btn">Submit</button>
+        </fieldset>
+      </form>
+      {{#error}}
+      <div id="error">
+        {{error}}
+      </div>
+      {{/error}}
+    </div>
+  </body>
+</html>

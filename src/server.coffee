@@ -3,6 +3,8 @@ fs = require 'fs'
 cookieParser = require 'cookie-parser'
 session = require 'express-session'
 
+pageRoot = ''
+
 Configuration = require './configuration'
 Submissions = require './submissions'
 pages = [
@@ -37,14 +39,14 @@ main = ->
 
 setup = (config, subs) ->
   app = express()
-  app.use '/assets', express.static 'assets'
+  app.use pageRoot + '/assets', express.static 'assets'
   app.use cookieParser()
   app.use session secret: '123123123' + Math.random()
   for page in pages
     instance = new (require('./pages/' + page)) config, subs
     do (instance) ->
-      app.get instance.path(), (args...) -> instance.get args...
-      app.post instance.path(), (args...) -> instance.post args...
+      app.get pageRoot + instance.path(), (args...) -> instance.get args...
+      app.post pageRoot + instance.path(), (args...) -> instance.post args...
   # todo change port
   if not port = parseInt process.argv[4]
     console.log 'invalid port: ' + process.argv[4]

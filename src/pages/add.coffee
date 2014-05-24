@@ -6,7 +6,7 @@ class Add extends Page
   
   get: (req, res) ->
     if not req.session.authenticated?
-      return res.redirect '/login'
+      return res.redirect 'login'
     name = 'Untitled'
     num = 0
     loop
@@ -21,6 +21,6 @@ class Add extends Page
       'da39a3ee5e6b4b0d3255bfef95601890afd80709' # empty string
     @config.challenges.push ch
     @config.save ->
-      res.redirect '/control'
+      res.redirect 'control'
 
 module.exports = Add

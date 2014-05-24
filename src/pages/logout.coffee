@@ -5,6 +5,6 @@ class Logout extends Page
   
   get: (req, res) ->
     delete req.session.authenticated
-    res.redirect '/'
+    res.redirect './'
 
 module.exports = Logout

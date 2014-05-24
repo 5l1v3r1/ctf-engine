@@ -19,7 +19,7 @@ class Login extends Page
   _gotPasswordReq: (password, req, res) ->
     if @config.settings.isPassword password
       req.session.authenticated = true
-      return res.redirect '/control'
+      return res.redirect 'control'
     @handler res, 'Login incorrect'
 
 module.exports = Login

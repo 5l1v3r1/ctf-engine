@@ -6,7 +6,7 @@ class Remove extends Page
   
   get: (req, res) ->
     if not req.session.authenticated?
-      return res.redirect '/login'
+      return res.redirect 'login'
     if typeof req.query.name isnt 'string'
       return res.send 400, 'Invalid name parameter'
     {name} = req.query
@@ -15,6 +15,6 @@ class Remove extends Page
         @config.challenges.splice i, 1
         break
     @config.save ->
-      res.redirect '/control'
+      res.redirect 'control'
 
 module.exports = Remove

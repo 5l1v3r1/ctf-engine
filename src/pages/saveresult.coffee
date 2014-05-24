@@ -24,7 +24,7 @@ class SaveResult extends Page
     sub = new Submission fields['full-name'], fields.identification,
       fields.name, fields.answer
     @subs.submissions.push sub
-    @subs.save -> res.redirect '/'
+    @subs.save -> res.redirect './'
   
   handleInvalid: (res, fields) ->
     view =

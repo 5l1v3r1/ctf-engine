@@ -5,7 +5,7 @@ class Control extends Page
   
   get: (req, res) ->
     if not req.session.authenticated?
-      return res.redirect '/login'
+      return res.redirect 'login'
     res.header 'Cache-Control', 'no-cache, no-store, must-revalidate'
     view =
       title: @config.settings.title

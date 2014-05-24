@@ -5,7 +5,7 @@ class ChangeChal extends Page
   
   post: (req, res) ->
     if not req.session.authenticated?
-      return res.redirect '/login'
+      return res.redirect 'login'
     args = [
       'name'
       'challenge-name'
@@ -21,6 +21,6 @@ class ChangeChal extends Page
           challenge.body = fields['challenge-body']
           challenge.answerHash = fields['challenge-hash']
           break
-      @config.save -> res.redirect '/control'
+      @config.save -> res.redirect 'control'
 
 module.exports = ChangeChal

@@ -15,6 +15,7 @@ pages = [
   'changechal'
   'changepass'
   'submit'
+  'saveresult'
 ]
 
 main = ->

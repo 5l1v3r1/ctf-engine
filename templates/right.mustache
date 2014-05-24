@@ -6,25 +6,39 @@
     <link href="assets/global.css" rel="stylesheet">
   </head>
   <body>
-    <div id="container">
-      <h1 class="main-title">Correct!</h1>
-      <form method="post" action="saveresult">
+    <div id="small-container">
+      <h1 class="main-title h1">Correct!</h1>
+      <br />
+      <form method="post" action="saveresult" class="form-horizontal">
         <input type="hidden" name="name" value="{{name}}" />
         <input type="hidden" name="answer" value="{{answer}}" />
-        <fieldset>
-          <label for="full-name">Your Name</label>
-          <input name="full-name" type="text" />
-          <label for="identification">{{identification}}</label>
-          <input name="identification" type="text" />
-          <br />
-          <button type="submit" class="btn">Submit</button>
-        </fieldset>
+        <div class="control-group">
+          <label class="control-label" for="full-name">Name</label>
+          <div class="controls">
+            <input name="full-name" type="text" />
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="identification">
+            {{identification}}
+          </label>
+          <div class="controls">
+            <input name="identification" type="text" />
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn">Submit</button>
+          </div>
+        </div>
       </form>
-      {{#error}}
-      <div id="error">
-        {{error}}
-      </div>
-      {{/error}}
+      <center>
+        {{#error}}
+        <div id="error">
+          {{error}}
+        </div>
+        {{/error}}
+      </center>
     </div>
   </body>
 </html>

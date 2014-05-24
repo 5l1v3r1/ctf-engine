@@ -12,6 +12,7 @@ pages = [
   'remove'
   'changebasic'
   'changechal'
+  'changepass'
 ]
 
 main = ->

@@ -15,6 +15,11 @@ class Settings
     digest = shasum.digest 'hex'
     return digest.toLowerCase() is @adminHash.toLowerCase()
   
+  setPassword: (str) ->
+    shasum = crypto.createHash 'sha1'
+    shasum.update str
+    @adminHash = shasum.digest 'hex'
+  
   toJSON: ->
     return {
       identification: @identification

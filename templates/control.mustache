@@ -9,31 +9,18 @@
   <body>
     <div id="container">
       <h1 class="main-title">Control Panel</h1>
-      <div id="settings">
-        <form id="change-password" action="/changepass" method="POST">
-          <legend>Change Password</legend>
-          <fieldset>
-            <label for="password">New Password</label>
-            <input name="password" type="password" />
-            <label for="verify-password">Confirm</label>
-            <input name="verify-password" type="password">
-            <br />
-            <button type="submit" class="btn">Change</button>
-          </fieldset>
-        </form>
-        <form id="basic-info" action="/changebasic" method="POST">
-          <legend>CTF Info</legend>
-          <fieldset>
-            <label for="identification-field">Identification Type</label>
-            <input name="identification-field" type="text" 
-                   value="{{identification}}" />
-            <label for="title-field">Contest Title</label>
-            <input name="title-field" type="text" value="{{title}}" />
-            <br />
-            <button type="submit" class="btn">Save</button>
-          </fieldset>
-        </form>
-      </div>
+      <form id="basic-info" action="/changebasic" method="POST">
+        <legend>CTF Info</legend>
+        <fieldset>
+          <label for="identification-field">Identification Type</label>
+          <input name="identification-field" type="text" 
+                 value="{{identification}}" />
+          <label for="title-field">Contest Title</label>
+          <input name="title-field" type="text" value="{{title}}" />
+          <br />
+          <button type="submit" class="btn">Save</button>
+        </fieldset>
+      </form>
       <div id="challenges">
         <legend>Challenges</legend>
         <table>
@@ -79,6 +66,18 @@
           Add Challenge
         </button>
       </div> <!-- #challenges -->
+      <br />
+      <form id="change-password" action="/changepass" method="POST">
+        <legend>Change Password</legend>
+        <fieldset>
+          <label for="password">New Password</label>
+          <input name="password" type="password" />
+          <label for="verify-password">Confirm</label>
+          <input name="verify-password" type="password">
+          <br />
+          <button type="submit" class="btn">Change</button>
+        </fieldset>
+      </form>
     </div> <!-- #container -->
   </body>
 </html>

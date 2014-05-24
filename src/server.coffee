@@ -4,7 +4,15 @@ cookieParser = require 'cookie-parser'
 session = require 'express-session'
 
 Configuration = require './configuration'
-pages = ['home', 'login', 'control', 'add', 'remove']
+pages = [
+  'home',
+  'login'
+  'control'
+  'add'
+  'remove'
+  'changebasic'
+  'changechal'
+]
 
 main = ->
   if process.argv.length isnt 4

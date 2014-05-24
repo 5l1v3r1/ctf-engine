@@ -3,7 +3,6 @@
   <head>
     <title>{{title}}</title>
     <link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <link href="assets/global.css" rel="stylesheet">
   </head>
   <body>
@@ -16,8 +15,10 @@
           <p class="challenge-description">{{&body}}</p>
           <fieldset>
             <label for="answer">Answer</label>
-            <input name="answer" type="text" />
-            <button type="submit" class="btn">Submit</button>
+            <div class="input-append">
+              <input name="answer" type="text" />
+              <button type="submit" class="btn">Submit</button>
+            </div>
           </fieldset>
         </form>
         {{/challenges}}

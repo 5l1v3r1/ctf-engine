@@ -3,7 +3,6 @@
   <head>
     <title>Control Panel - {{title}}</title>
     <link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <link href="assets/global.css" rel="stylesheet">
     <link href="assets/global.css" rel="stylesheet">
   </head>
@@ -41,16 +40,17 @@
           {{#challenges}}
           <tr><td>
             <form action="/changechal" method="POST" class="form-horizontal">
+              <input type="hidden" name="name" value="{{name}}" />
               <div class="control-group">
                 <label class="control-label" for="challenge-name">Name</label>
                 <div class="controls">
-                  <input class="challenge-name" value="{{name}}" type="text" />
+                  <input name="challenge-name" value="{{name}}" type="text" />
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label" for="challenge-body">Body</label>
                 <div class="controls">
-                  <textarea class="challenge-body">{{body}}</textarea>
+                  <textarea name="challenge-body">{{body}}</textarea>
                 </div>
               </div>
               <div class="control-group">
@@ -58,7 +58,7 @@
                   Answer SHA1
                 </label>
                 <div class="controls">
-                  <input class="challenge-hash" value="{{answerHash}}"
+                  <input name="challenge-hash" value="{{answerHash}}"
                          type="text" />
                 </div>
               </div>

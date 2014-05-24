@@ -2,20 +2,27 @@
 <html>
   <head>
     <title>Login - {{title}}</title>
+    <link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link href="assets/global.css" rel="stylesheet">
   </head>
   <body>
     <div id="container">
       <h1 class="main-title">Login</h1>
-      <form method="post">
-        Password: <input name="password" id="password" type="password" />
-        <br />
-        <input type="submit" value="Submit">
-      </form>
-      {{#error}}
-      <div id="error">
-        {{error}}
-      </div>
-      {{/error}}
+      <center>
+        <form method="post">
+          <fieldset>
+            <input name="password" type="password" />
+            <br />
+            <button type="submit" class="btn">Submit</button>
+          </fieldset>
+        </form>
+        {{#error}}
+        <div id="error">
+          {{error}}
+        </div>
+        {{/error}}
+      </center>
     </div>
   </body>
 </html>

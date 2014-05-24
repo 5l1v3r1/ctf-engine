@@ -1,0 +1,11 @@
+h1 {
+  text-align: center;
+}
+
+#container {
+  padding-left: 10px;
+  padding-right: 10px;
+  position: absolute;
+  left: calc(50% - 300px);
+  width: 600px;
+}

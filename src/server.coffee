@@ -25,6 +25,7 @@ setup = (config) ->
   login = new Login config
   control = new Control config
   app = express()
+  app.use '/assets', express.static 'assets'
   app.use cookieParser()
   app.use session secret: '123123123' + Math.random()
   app.get '/', (args...) -> home.get args...

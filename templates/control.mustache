@@ -5,6 +5,7 @@
     <link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <link href="assets/global.css" rel="stylesheet">
+    <link href="assets/global.css" rel="stylesheet">
   </head>
   <body>
     <div id="container">
@@ -36,35 +37,47 @@
       </div>
       <div id="challenges">
         <legend>Challenges</legend>
-        {{#challenges}}
-        <div class="challenge">
-          <table class="challenge-fields">
-            <tr>
-              <td class="field">Name</td>
-              <td class="data">
-                <input class="challenge-name" value="{{name}}" />
-              </td>
-            </tr>
-            <tr>
-              <td class="field">Body</td>
-              <td class="data">
-                <textarea class="challenge-body">
-                  {{body}}
-                </textarea>
-              </td>
-            </tr>
-            <tr>
-              <td class="field">Answer Hash</td>
-              <td class="data">
-                <input class="challenge-hash" value="{{answerHash}}" />
-              </td>
-            </tr>
-          </table> <!-- table.challenge-fields -->
-          <button class="challenge-remove">Remove</button>
-          <button class="challenge-submit">Submit</button>
-        </div> <!-- div.challenge -->
-        {{/challenges}}
-        <button id="add-challenge" class="btn">Add Challenge</button>
+        <table>
+          {{#challenges}}
+          <tr><td>
+            <form action="/changechal" method="POST" class="form-horizontal">
+              <div class="control-group">
+                <label class="control-label" for="challenge-name">Name</label>
+                <div class="controls">
+                  <input class="challenge-name" value="{{name}}" type="text" />
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="challenge-body">Body</label>
+                <div class="controls">
+                  <textarea class="challenge-body">{{body}}</textarea>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="challenge-hash">
+                  Answer SHA1
+                </label>
+                <div class="controls">
+                  <input class="challenge-hash" value="{{answerHash}}"
+                         type="text" />
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="controls">
+                  <button type="button" class="btn" 
+                          onclick="location='remove?name={{nameEscaped}}'">
+                    Remove
+                  </button>
+                  <button class="btn" type="submit">Save</button>
+                </div>
+              </div>
+            </form> <!-- form -->
+          </td></tr>
+          {{/challenges}}
+        </table>
+        <button id="add-challenge" class="btn" onclick="location='add'">
+          Add Challenge
+        </button>
       </div> <!-- #challenges -->
     </div> <!-- #container -->
   </body>

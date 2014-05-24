@@ -10,7 +10,7 @@ class Configuration
   
   save: (cb) ->
     if @isSaving
-      @waitingSaveCbs.push cb
+      @waitingSaveCbs.push cb ? (->)
     else
       @isSaving = true
       data = JSON.stringify @toJSON(), null, 2

@@ -3,6 +3,7 @@ mustache = require 'mustache'
 
 class Page
   constructor: (@config) ->
+  path: -> throw new Error 'Page::path() is a pure virtual method'
   get: (req, res) -> res.send 404, 'Page::get() not overloaded'
   post: (req, res) -> res.send 404, 'Page::post() not overloaded'
   template: (res, name, view) ->

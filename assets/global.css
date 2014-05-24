@@ -3,9 +3,12 @@ h1 {
 }
 
 #container {
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-bottom: 10px;
   position: absolute;
   left: calc(50% - 300px);
   width: 600px;
+}
+
+textarea {
+  resize: none;
 }

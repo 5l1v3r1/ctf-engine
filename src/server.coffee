@@ -47,7 +47,8 @@ setup = (config, subs) ->
     do (instance) ->
       app.get pageRoot + instance.path(), (args...) -> instance.get args...
       app.post pageRoot + instance.path(), (args...) -> instance.post args...
-  # todo change port
+  if pageRoot.length > 0
+      app.get pageRoot, (req, res) -> res.redirect pageRoot + '/'
   if not port = parseInt process.argv[4]
     console.log 'invalid port: ' + process.argv[4]
     process.exit()

@@ -30,7 +30,7 @@ class Page
     bb.on 'finish', =>
       for key in names
         if not fields[key]?
-          return cb new Error 'missing field: ' + name
+          return cb new Error 'missing field: ' + key
       cb null, fields
     req.pipe bb
 
